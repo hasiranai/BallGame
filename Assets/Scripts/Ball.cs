@@ -20,10 +20,10 @@ public class Ball : MonoBehaviour
     void Update()
     {
         // HorizontalとVerticalのスペルに注意（ポイント）
-        float moveH = Input.GetAxis("Horizontal");
-        float moveV = Input.GetAxis("Vertical");
-        Vector3 movement = new Vector3(moveH, 0, moveV);
-        rb.AddForce(movement * moveSpeed);
+        float moveH = Input.GetAxis("Horizontal"); // -1.0
+        float moveV = Input.GetAxis("Vertical"); // 1.0
+        Vector3 movement = new Vector3(moveH, 0, moveV); // new Vector3(-1.0, 0, 1.0)
+        rb.AddForce(movement * moveSpeed); // (-1.0, 0, 1.0 * 3)=(-3.0, 0, 3.0)
     }
 
     private void OnTriggerEnter(Collider other)
