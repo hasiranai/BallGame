@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;  // 追加
 
 public class Ball : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class Ball : MonoBehaviour
     private Rigidbody rb;
 
     private bool isJumping = false;
+
+    private int coinCount = 0;
 
     void Start()
     {
@@ -51,6 +54,17 @@ public class Ball : MonoBehaviour
             Destroy(other.gameObject);
 
             AudioSource.PlayClipAtPoint(coinGet, transform.position);
+
+            // コインを１枚取得するごとに「coinCount」を１ずつ増加させる
+            coinCount += 1;
+
+            // もしも「coinCount」が２になったら（条件）
+            if (coinCount == 2)
+            {
+                // GameClearシーンに遷移する
+                // 遷移させるシーンは名前で特定できるので「一言一句」合致させること（ポイント）
+                SceneManager.LoadScene("GameClear");
+            }
         }
     }
 
