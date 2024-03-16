@@ -19,6 +19,8 @@ public class Ball : MonoBehaviour
 
     private int coinCount = 0;
 
+    private Vector3 pos;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -26,6 +28,14 @@ public class Ball : MonoBehaviour
 
     void Update()
     {
+        // Ballの現在位置を取得する
+        pos = transform.position;
+
+        if (pos.y < -10)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
+
         // HorizontalとVerticalのスペルに注意（ポイント）
         float moveH = Input.GetAxis("Horizontal"); // -1.0
         float moveV = Input.GetAxis("Vertical"); // 1.0

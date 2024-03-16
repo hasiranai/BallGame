@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class FallBlock : MonoBehaviour
 {
+    [SerializeField]
     private Rigidbody rb;
+
+    [SerializeField]
+    private float interval = 2.0f;
 
     void Start()
     {
@@ -17,7 +21,7 @@ public class FallBlock : MonoBehaviour
         {
             // （ポイント）Invoke（"呼び出すメソッド名", 呼び出すまでの時間）
             // Fallという名前のメソッドを２秒後に呼び出す
-            Invoke("Fall", 2);
+            Invoke("Fall", interval);
         }
     }
 
