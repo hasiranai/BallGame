@@ -13,6 +13,8 @@ public class Ball : MonoBehaviour
 
     public float jumpSpeed;  // ジャンプ
 
+    public GameObject[] coinIcons;
+
     private Rigidbody rb;
 
     private bool isJumping = false;
@@ -67,6 +69,8 @@ public class Ball : MonoBehaviour
 
             // コインを１枚取得するごとに「coinCount」を１ずつ増加させる
             coinCount += 1;
+
+            coinIcons[coinCount - 1].SetActive(false);
 
             // もしも「coinCount」が２になったら（条件）
             if (coinCount == 2)
