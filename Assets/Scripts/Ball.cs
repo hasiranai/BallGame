@@ -10,10 +10,13 @@ public class Ball : MonoBehaviour
     public float moveSpeed;
 
     public AudioClip coinGet;
+    public AudioClip keyObj;
 
     public float jumpSpeed;  // ジャンプ
 
     public GameObject[] coinIcons;
+
+    public GameObject key;
 
     private Rigidbody rb;
 
@@ -71,6 +74,14 @@ public class Ball : MonoBehaviour
             coinCount += 1;
 
             coinIcons[coinCount - 1].SetActive(false);
+
+            // 追加
+            if (coinCount == 1)
+            {
+                key.SetActive(true);
+
+                AudioSource.PlayClipAtPoint(keyObj, transform.position);
+            }
 
             // もしも「coinCount」が２になったら（条件）
             if (coinCount == 2)
