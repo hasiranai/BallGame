@@ -83,8 +83,8 @@ public class Ball : MonoBehaviour
                 AudioSource.PlayClipAtPoint(keyObj, transform.position);
             }
 
-            // もしも「coinCount」が２になったら（条件）
-            if (coinCount == 2)
+            // もしも「coinCount」が２になったら（条件）7に変更
+            if (coinCount == 7)
             {
                 // GameClearシーンに遷移する
                 // 遷移させるシーンは名前で特定できるので「一言一句」合致させること（ポイント）
