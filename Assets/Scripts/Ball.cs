@@ -17,6 +17,7 @@ public class Ball : MonoBehaviour
     public GameObject[] coinIcons;
 
     public GameObject key;
+    public bool hasKey;     // 鍵を持っているか管理するフラグ用の変数trueなら持ってる
 
     private Rigidbody rb;
 
@@ -76,7 +77,7 @@ public class Ball : MonoBehaviour
             coinIcons[coinCount - 1].SetActive(false);
 
             // 追加
-            if (coinCount == 1)
+            if (coinCount == 3)
             {
                 key.SetActive(true);
 
@@ -90,6 +91,15 @@ public class Ball : MonoBehaviour
                 // 遷移させるシーンは名前で特定できるので「一言一句」合致させること（ポイント）
                 SceneManager.LoadScene("GameClear");
             }
+        }
+
+        // 鍵のオブジェクトに触ったら
+        if (other.CompareTag("Key"))
+        {
+            // 鍵を持ってる状態にする
+            hasKey = true;
+
+            Destroy(other.gameObject);
         }
     }
 
