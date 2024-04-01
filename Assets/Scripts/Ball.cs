@@ -77,7 +77,7 @@ public class Ball : MonoBehaviour
             coinIcons[coinCount - 1].SetActive(false);
 
             // 追加
-            if (coinCount == 3)
+            if (coinCount == 7) // 3から変更
             {
                 key.SetActive(true);
 
@@ -85,12 +85,12 @@ public class Ball : MonoBehaviour
             }
 
             // もしも「coinCount」が２になったら（条件）7に変更
-            if (coinCount == 7)
-            {
+            //if (coinCount == 7)
+            //{
                 // GameClearシーンに遷移する
                 // 遷移させるシーンは名前で特定できるので「一言一句」合致させること（ポイント）
-                SceneManager.LoadScene("GameClear");
-            }
+                //SceneManager.LoadScene("GameClear");
+            //}
         }
 
         // 鍵のオブジェクトに触ったら
@@ -100,6 +100,20 @@ public class Ball : MonoBehaviour
             hasKey = true;
 
             Destroy(other.gameObject);
+        }
+
+        if (other.CompareTag("Goal"))
+        {
+            if (hasKey)
+            {
+                // ゴールシーンに移行する処理を追加
+                SceneManager.LoadScene("GameClear");
+            }
+            else
+            {
+                // プレイヤーが鍵を持っていない場合の処理を追加
+                Debug.Log("鍵を持っていません！");
+            }
         }
     }
 
